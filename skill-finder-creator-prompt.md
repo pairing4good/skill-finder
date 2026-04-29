@@ -1,12 +1,6 @@
 # Claude Code Input: Create the `skill-finder` Skill
 
-Paste into Claude Code in an empty project directory. Prerequisites: `skill-creator` skill available, and `skill-registry` MCP server already running and connected with `search_skills` and `get_skill_manifest` tools available.
-
----
-
-## Prompt for Claude Code
-
-Use the `skill-creator` skill to create a new skill called `skill-finder`. Read `skill-creator`'s SKILL.md first and follow its guidance for structure, evaluation, and iterative refinement.
+Create a new skill called `skill-finder`.
 
 ### Purpose
 
@@ -32,21 +26,7 @@ If the MCP server is not connected or the required tools are missing, halt with 
 
 > "The skill-registry MCP server is required for skill discovery but is not available. [Specific issue: not connected / authentication failed / tools missing]
 >
-> Please ensure the skill-registry MCP server is configured and running:
->
-> ```
-> # Verify the MCP server is registered with your client (Claude Code, Claude Desktop, etc.)
-> # Check your MCP client configuration for an entry named 'skill-registry'
->
-> # Verify required environment variables are set (example for Artifactory backend):
-> echo $ARTIFACTORY_PLATFORM_URL
-> echo $ARTIFACTORY_REPOSITORY
-> # ARTIFACTORY_ACCESS_TOKEN should be set but not echoed
->
-> # Restart your MCP client after configuration changes so the server is loaded.
-> ```
->
-> After resolving the connection issue, re-run your request."
+> Please ensure the skill-registry MCP server is configured and running."
 
 Do not proceed to any subsequent step if the MCP server is unavailable — without registry access, this skill has no source of truth and cannot return a meaningful result. Returning `no_match` in this state would falsely signal that no matching skill exists when in reality the registry was never queried.
 
